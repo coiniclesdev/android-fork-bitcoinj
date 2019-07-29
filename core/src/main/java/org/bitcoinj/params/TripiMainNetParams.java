@@ -2,26 +2,25 @@ package org.bitcoinj.params;
 
 import org.bitcoinj.core.*;
 import org.bitcoinj.net.discovery.*;
-import org.bitcoinj.params.AbstractBitcoinNetParams;
 
 import java.net.*;
 
 import static com.google.common.base.Preconditions.*;
 
 
-public class QtumTestNetParams extends AbstractBitcoinNetParams {
+public class TripiMainNetParams extends AbstractBitcoinNetParams {
     public static final int MAINNET_MAJORITY_WINDOW = 1000;
     public static final int MAINNET_MAJORITY_REJECT_BLOCK_OUTDATED = 950;
     public static final int MAINNET_MAJORITY_ENFORCE_BLOCK_UPGRADE = 750;
 
-    public QtumTestNetParams() {
+    public TripiMainNetParams() {
         super();
         interval = INTERVAL;
         targetTimespan = TARGET_TIMESPAN;
         maxTarget = Utils.decodeCompactBits(0x1d00ffffL);
-        dumpedPrivateKeyHeader = 239;
-        addressHeader = 120;
-        p2shHeader = 110;
+        dumpedPrivateKeyHeader = 117;
+        addressHeader = 65;
+        p2shHeader = 61;
         acceptableAddressCodes = new int[] { addressHeader, p2shHeader };
         port = 8333;
         packetMagic = 0xf9beb4d9L;
@@ -35,7 +34,7 @@ public class QtumTestNetParams extends AbstractBitcoinNetParams {
         genesisBlock.setDifficultyTarget(0x1d00ffffL);
         genesisBlock.setTime(1231006505L);
         genesisBlock.setNonce(2083236893);
-        id = ID_QTUM_TESTNET;
+        id = ID_TRIPI_MAINNET;
         subsidyDecreaseBlockCount = 210000;
         spendableCoinbaseDepth = 100;
         String genesisHash = genesisBlock.getHashAsString();
@@ -113,10 +112,10 @@ public class QtumTestNetParams extends AbstractBitcoinNetParams {
         };
     }
 
-    private static QtumTestNetParams instance;
-    public static synchronized QtumTestNetParams get() {
+    private static TripiMainNetParams instance;
+    public static synchronized TripiMainNetParams get() {
         if (instance == null) {
-            instance = new QtumTestNetParams();
+            instance = new TripiMainNetParams();
         }
         return instance;
     }
