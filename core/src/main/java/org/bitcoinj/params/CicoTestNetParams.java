@@ -2,25 +2,26 @@ package org.bitcoinj.params;
 
 import org.bitcoinj.core.*;
 import org.bitcoinj.net.discovery.*;
+import org.bitcoinj.params.AbstractBitcoinNetParams;
 
 import java.net.*;
 
 import static com.google.common.base.Preconditions.*;
 
 
-public class TripiMainNetParams extends AbstractBitcoinNetParams {
+public class CicoTestNetParams extends AbstractBitcoinNetParams {
     public static final int MAINNET_MAJORITY_WINDOW = 1000;
     public static final int MAINNET_MAJORITY_REJECT_BLOCK_OUTDATED = 950;
     public static final int MAINNET_MAJORITY_ENFORCE_BLOCK_UPGRADE = 750;
 
-    public TripiMainNetParams() {
+    public CicoTestNetParams() {
         super();
         interval = INTERVAL;
         targetTimespan = TARGET_TIMESPAN;
-        maxTarget = Utils.decodeCompactBits(0x1f00ffffL);
-        dumpedPrivateKeyHeader = 117;
-        addressHeader = 65;
-        p2shHeader = 61;
+        maxTarget = Utils.decodeCompactBits(0x1d00ffffL);
+        dumpedPrivateKeyHeader = 239;
+        addressHeader = 120;
+        p2shHeader = 110;
         acceptableAddressCodes = new int[] { addressHeader, p2shHeader };
         port = 8333;
         packetMagic = 0xf9beb4d9L;
@@ -34,7 +35,7 @@ public class TripiMainNetParams extends AbstractBitcoinNetParams {
         genesisBlock.setDifficultyTarget(0x1d00ffffL);
         genesisBlock.setTime(1231006505L);
         genesisBlock.setNonce(2083236893);
-        id = ID_TRIPI_MAINNET;
+        id = ID_CICO_TESTNET;
         subsidyDecreaseBlockCount = 210000;
         spendableCoinbaseDepth = 100;
         String genesisHash = genesisBlock.getHashAsString();
@@ -112,10 +113,10 @@ public class TripiMainNetParams extends AbstractBitcoinNetParams {
         };
     }
 
-    private static TripiMainNetParams instance;
-    public static synchronized TripiMainNetParams get() {
+    private static CicoTestNetParams instance;
+    public static synchronized CicoTestNetParams get() {
         if (instance == null) {
-            instance = new TripiMainNetParams();
+            instance = new CicoTestNetParams();
         }
         return instance;
     }
